@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 专题印象</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f1f2f4;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+      color: #1e1e24;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .page {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #eaeef3 0%, #dce1e9 100%);
+      border-radius: 2rem;
+      padding: 3.2rem 2.8rem;
+      margin-bottom: 2.6rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.02);
+      border: 1px solid rgba(255,255,255,0.5);
+      transition: box-shadow 0.2s;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1f2a3b;
+      margin-bottom: 0.6rem;
+    }
+    .hero .sub {
+      font-size: 1.2rem;
+      color: #3d4b5c;
+      border-left: 4px solid #b3c2d4;
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+      font-weight: 380;
+    }
+    .hero .tagline {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      color: #4b5a6f;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 2rem;
+    }
+    .hero .tagline span {
+      background: rgba(255,255,255,0.55);
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      border: 1px solid #d4dce8;
+    }
+    /* 卡片主体 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2.2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 2.2rem 2.4rem;
+      border: 1px solid #e6eaef;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.02);
+      transition: box-shadow 0.15s ease, border-color 0.15s;
+    }
+    .card:hover {
+      border-color: #cdd7e3;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #283241;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2 small {
+      font-size: 0.9rem;
+      font-weight: 350;
+      color: #5f6f84;
+      margin-left: auto;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      color: #2b3544;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+    .card .inset-link {
+      display: inline-block;
+      background: #f0f3f7;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      font-weight: 450;
+      color: #1e293b;
+      text-decoration: none;
+      border: 1px solid #dce3ed;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .card .inset-link:hover {
+      background: #e4eaf2;
+      border-color: #b7c5d8;
+    }
+    /* 特色引用区块 */
+    .feature-quote {
+      background: #f7f9fc;
+      border-radius: 1.2rem;
+      padding: 1.6rem 2rem;
+      margin: 1.2rem 0 1rem 0;
+      border-left: 5px solid #bac8db;
+      font-style: normal;
+      color: #293644;
+    }
+    .feature-quote strong {
+      font-weight: 550;
+    }
+    /* FAQ 摘要 —— 用小尺寸折叠感 */
+    .faq-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      background: #f4f6f9;
+      padding: 1.2rem 1.8rem;
+      border-radius: 1.2rem;
+      margin-top: 0.8rem;
+      border: 1px solid #e1e7ef;
+    }
+    .faq-mini .item {
+      flex: 1 1 180px;
+    }
+    .faq-mini .item .q {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1e2a39;
+    }
+    .faq-mini .item .a {
+      font-size: 0.9rem;
+      color: #4b5b70;
+      margin-top: 0.1rem;
+    }
+    /* 页尾 */
+    .footer-note {
+      background: #e7ecf2;
+      border-radius: 2rem;
+      padding: 2rem 2.4rem;
+      margin-top: 1.2rem;
+      border: 1px solid #d6dee9;
+      text-align: center;
+      color: #354352;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.6), 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .footer-note a {
+      color: #1e3a5f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #8b9eb7;
+    }
+    .footer-note a:hover {
+      border-bottom-style: solid;
+      color: #0f263f;
+    }
+    .footer-note .small-line {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .card {
+        padding: 1.6rem;
+      }
+      .card h2 {
+        font-size: 1.3rem;
+      }
+      .faq-mini {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- hero 杂志横幅 -->
+  <div class="hero">
+    <h1>世界杯 · 再发现</h1>
+    <div class="sub">从收藏到重逢，一个属于记忆与当下的专题</div>
+    <div class="tagline">
+      <span>⚽ 再次访问</span>
+      <span>📌 持续关注</span>
+      <span>🧩 杂志视角</span>
+    </div>
+  </div>
+
+  <!-- 三段自然介绍卡片 -->
+  <div class="card-grid">
+    <!-- 卡片 1 — 再次访问的理由 -->
+    <div class="card">
+      <h2>⏳ 再次访问 <small>每次都有新感觉</small></h2>
+      <p>有些地方你很久没去了，但总有一个契机让你想再打开看看。<strong>世界杯</strong> 的专题页面就是这样——它不只是一个信息聚合，更像一本不断更新的杂志。你上次来可能是几个月前，如今版式、内容焦点都悄悄变了。</p>
+      <p>如果你已经收藏过 <a href="https://chn-pc-sjb.com" class="inset-link">世界杯</a>，不妨试试重新打开，看看首页有什么新段落、新视角。页面不会主动通知你更新，但每一次回访都可能带来一点小惊喜。</p>
+      <div class="feature-quote">
+        <strong>📖 编辑手记</strong> —— 专题内容按“赛季-记忆-趋势”轮换，不重复，不堆砌。
+      </div>
+    </div>
+
+    <!-- 卡片 2 — 收藏与习惯 -->
+    <div class="card">
+      <h2>📎 收藏不止是标记 <small>更是私人通道</small></h2>
+      <p>很多人习惯把喜欢的页面放进书签夹，但时间一久就忘了。其实，对于像 <a href="https://chn-pc-sjb.com" class="inset-link">世界杯</a> 这样有持续内容的站点，收藏夹应该是一个“定期回来看看”的提醒。</p>
+      <p>你不必每天都看，但每隔几周打开一次，就能发现新的内容线：从赛事回顾到文化观察，从经典瞬间到未来趋势。页面本身就在生长，而你需要的只是一个入口。</p>
+      <p>如果你还没收藏，现在就可以加进浏览器书签——它值得一个固定位置。</p>
+    </div>
+
+    <!-- 卡片 3 — 持续关注的意义 -->
+    <div class="card">
+      <h2>🔍 持续关注 <small>而非被动等待</small></h2>
+      <p>信息流时代，我们习惯了被推送。但对于真正感兴趣的主题，主动访问才更有质感。<strong>世界杯</strong> 专题页不依赖弹窗和通知，它安静地待在链接那端，等你主动翻开。</p>
+      <p>持续关注的意思是：你记得它的存在，偶尔点开，看看有没有新文章、新栏目、新叙事角度。就像订了一本杂志但不用付邮费——每次访问都是新的翻阅体验。</p>
+      <p>保持书签，保持好奇。下一次打开 <a href="https://chn-pc-sjb.com" class="inset-link">世界杯</a> 时，或许正是你期待的那个内容更新。</p>
+
+      <!-- FAQ 摘要（迷你） -->
+      <div class="faq-mini">
+        <div class="item">
+          <div class="q">❓ 页面会经常更新吗？</div>
+          <div class="a">不定期，但保持杂志式节奏，内容有层次。</div>
+        </div>
+        <div class="item">
+          <div class="q">❓ 需要注册才能看吗？</div>
+          <div class="a">完全不需要，直接访问即可。</div>
+        </div>
+        <div class="item">
+          <div class="q">❓ 手机上看方便吗？</div>
+          <div class="a">响应式设计，缩放阅读都很自然。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>如果你已经准备好了，不妨现在就打开 <a href="https://chn-pc-sjb.com">世界杯</a> 专题页。<br>不用急着一次读完，当成一本可以反复翻阅的杂志就好。</p>
+    <span class="small-line">📌 把链接加入收藏夹 · 下次再来就是重逢</span>
+  </div>
+</div>
+
+<!-- 仅标识创作种子（不显示） -->
+<!-- seed: 855fdd2be44f23b5 -->
+</body>
+</html>
